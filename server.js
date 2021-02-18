@@ -18,10 +18,9 @@ app.set("view engine", "ejs");
 app.use("/css", express.static(path.resolve(__dirname, "assets/css")));
 app.use("/img", express.static(path.resolve(__dirname, "assets/img")));
 app.use("/js", express.static(path.resolve(__dirname, "assets/js")));
-//Get Method
-app.get("/", (req, res) => {
-  res.render("index.ejs"); //helps us to render a HTML file
-});
+
+//loading Get Method using require
+app.use("/", require("./server/routes/router"));
 
 //using dotenv to change port
 dotenv.config({ path: "config.env" });
